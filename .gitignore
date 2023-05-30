@@ -1,0 +1,10 @@
+/.gradle
+/.idea
+/build
+/app/.cxx
+/app/.gradle
+/app/build
+/app/release
+/PrefLock/.cxx
+/PrefLock/build
+local.properties
