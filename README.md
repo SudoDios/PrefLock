@@ -20,7 +20,7 @@ allprojects {
 Step 2 : Add the dependency:
 ```gradle
 dependencies {
-	 implementation 'com.github.SudoDios:PrefLock:1.3'
+	 implementation 'com.github.SudoDios:PrefLock:1.3.1'
 }
 ```
 ### How to use
