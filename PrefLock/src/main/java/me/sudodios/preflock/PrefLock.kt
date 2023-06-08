@@ -28,12 +28,16 @@ object PrefLock {
 
     fun <T> get(key: String, type: Class<T>, def: T? = null): T? {
         if (this::plc.isInitialized) {
-            val value = plc.sp.getString(encryptKey(key), def?.toString())
-            val decodeValue = decodeValue(value)
-            return try {
-                Gson().fromJson(decodeValue, type)
-            } catch (_ : JsonSyntaxException) {
-                return null
+            if (contains(key)) {
+                val value = plc.sp.getString(encryptKey(key), def?.toString())
+                val decodeValue = decodeValue(value)
+                return try {
+                    Gson().fromJson(decodeValue, type)
+                } catch (_ : JsonSyntaxException) {
+                    return null
+                }
+            } else {
+                return def
             }
         } else {
             Log.e(LOG,"PrefLock is not initialized")
